@@ -28,5 +28,6 @@ public class dataBaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
         /*asasas*/
+        /*checking to see if I can add this comment and it will appear on github*/
     }
 }
