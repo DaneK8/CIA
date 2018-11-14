@@ -15,7 +15,6 @@ public class dataBaseHelper extends SQLiteOpenHelper {
 
     public dataBaseHelper( Context context) {
         super(context, DATABASE_NAME, null, 1);
-        SQLiteDatabase db = this. getWritableDatabase();
     }
 
     @Override
@@ -27,6 +26,17 @@ public class dataBaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
-        /*asasas*/
+    }
+    public boolean insertData(String item_name,String description ,String condition) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL_2,item_name);
+        contentValues.put(COL_4, description);
+        contentValues.put(COL_5, condition);
+        long result = db.insert(TABLE_NAME,null ,contentValues);
+        if(result == -1)
+            return false;
+        else
+            return true;
     }
 }
